@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { MENU, TIER1, TIER2, SECTIONS, peso } from '../data/menu.js';
+import { MENU, TIER1, TIER2, SECTIONS, peso } from "../data/menu.js";
 
 export default function MenuView() {
   const [query, setQuery] = useState('');

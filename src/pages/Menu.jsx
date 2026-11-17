@@ -2,8 +2,8 @@ import { useMemo, useState } from 'react';
 import { MENU, TIER1, TIER2, SECTIONS, peso } from '../data/menu.js';
 import { useCart } from '../context/CartContext.jsx';
 import ItemModal from '../components/ItemModal.jsx';
-import CartDrawer from '../components/CartDrawer.jsx';
-import OrdersDrawer from '../components/OrdersDrawer.jsx';
+import CartDrawer from "../components/CartDrawer.jsx";
+import OrdersDrawer from "../components/OrdersDrawer.jsx";
 
 export default function Menu() {
   const { count, subtotal, orders } = useCart();

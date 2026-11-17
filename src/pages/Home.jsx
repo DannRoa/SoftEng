@@ -1,15 +1,27 @@
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext.jsx';
 
 export default function Home() {
+  const { user, logout } = useAuth();
+
   return (
     <main className="relative flex min-h-screen flex-col items-center justify-center bg-[radial-gradient(circle_at_center,#3d2721_0%,#2b1b17_70%,#1a100d_100%)] px-5 py-10 text-center">
-      <div className="absolute left-0 top-0 flex w-full justify-end p-5">
-        <button className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-coffee-700/60 px-4 py-2 text-[11px] font-bold tracking-wider text-gold backdrop-blur transition hover:bg-gold hover:text-coffee-900">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
-          </svg>
-          Login
-        </button>
+      <div className="absolute left-0 top-0 flex w-full items-center justify-end gap-2 p-5">
+        {user ? (
+          <>
+            <span className="text-[11px] font-bold tracking-wider text-gold">Hi, {user.name.split(' ')[0]}</span>
+            <button onClick={logout} className="rounded-full border border-gold/40 bg-coffee-700/60 px-4 py-2 text-[11px] font-bold tracking-wider text-gold backdrop-blur transition hover:bg-gold hover:text-coffee-900">
+              Logout
+            </button>
+          </>
+        ) : (
+          <Link to="/login" className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-coffee-700/60 px-4 py-2 text-[11px] font-bold tracking-wider text-gold backdrop-blur transition hover:bg-gold hover:text-coffee-900">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+            </svg>
+            Login
+          </Link>
+        )}
       </div>
 
       <header className="mb-12">

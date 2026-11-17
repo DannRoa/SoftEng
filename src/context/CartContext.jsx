@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback, useMemo } from 'react';
+import { addOrder } from '../lib/livestore.js';
 
 const CartContext = createContext(null);
 export const useCart = () => useContext(CartContext);
@@ -19,7 +20,9 @@ export function CartProvider({ children }) {
   const placeOrder = useCallback(() => {
     const placed = {
       id: String(Date.now()).slice(-6),
+      createdAt: Date.now(),
       placedAt: new Date().toLocaleString(),
+      status: 'new',
       items: cart,
       total: cart.reduce((s, i) => s + i.unitPrice * i.qty, 0),
       type: order.type,
@@ -27,7 +30,7 @@ export function CartProvider({ children }) {
       name: order.name,
       mobile: order.mobile,
     };
-    console.log('ORDER', placed);
+    addOrder(placed); // goes live to the staff dashboard
     setLastOrder(placed);
     setOrders((o) => [placed, ...o]);
     setCart([]);

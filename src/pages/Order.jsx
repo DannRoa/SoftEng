@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
-import StepHeader from '../components/StepHeader.jsx';
+import StepHeader from "../components/StepHeader.jsx";
 
 const TYPES = [
   { id: 'dine-in', icon: '🍽️', label: 'Dine in' },

@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
-import StepHeader from '../components/StepHeader.jsx';
+import StepHeader from "../components/StepHeader.jsx";
 
 export default function Table() {
   const navigate = useNavigate();
